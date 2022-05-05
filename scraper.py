@@ -3,7 +3,8 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
-url = 'https://www.ceneo.pl/91714422#tab=reviews'
+opinion_number = input("Insert Ceneo.pl opinion number: ")
+url = f'https://www.ceneo.pl/{opinion_number}#tab=reviews'
 all_opinions = []
 while(url):
 
@@ -52,9 +53,9 @@ while(url):
         }
         all_opinions.append(single_opinion)
     try:
-        url = 'https://www.ceneo.pl'+page.select_one('a.pagination__next')['href']
+        url = f'https://www.ceneo.pl/{opinion_number}'+page.select_one('a.pagination__next')['href']
     except TypeError:
         url = None
 
-with open("opinions/91714422.json", "w", encoding="UTF-8") as file:
+with open(f"opinions/{opinion_number}.json", "w", encoding="UTF-8") as file:
     json.dump(all_opinions, file, indent=4, ensure_ascii=False)
