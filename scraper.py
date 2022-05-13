@@ -26,7 +26,7 @@ selectors= {
         }
 
 
-ceneo_id = input("Insert Ceneo.pl opinion number: ")
+ceneo_id = input("Insert Ceneo.pl opinion id: ")
 url = f'https://www.ceneo.pl/{ceneo_id}#tab=reviews'
 all_opinions = []
 
